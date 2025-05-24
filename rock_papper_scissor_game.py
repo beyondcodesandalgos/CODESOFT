@@ -1,48 +1,81 @@
+import tkinter as tk
 import random
 
-choices = ["Rock", "Paper", "Scissor"]
+# Game choices
+choices = ["Rock", "Paper", "Scissors"]
 
-player = False
+# Scores
 cpu_score = 0
 player_score = 0
 
-while True:
-    player = input("Enter your choice ").capitalize()
+# Function to play the game
+def play(player_choice):
+    global cpu_score, player_score
+    computer_choice = random.choice(choices)
+    
+    # Display computer's choice in a separate label
+    comp_choice_label.config(text=f"Computer chose: {computer_choice}", fg="blue")
 
-    computer = random.choice(choices)
+    # Determine the result
+    if player_choice == computer_choice:
+        result_text = "It's a tie!"
+        result_label.config(text=result_text, fg="gray")  # Neutral color
+    elif (player_choice == "Rock" and computer_choice == "Scissors") or \
+         (player_choice == "Paper" and computer_choice == "Rock") or \
+         (player_choice == "Scissors" and computer_choice == "Paper"):
+        result_text = f"You win! {player_choice} beats {computer_choice}"
+        result_label.config(text=result_text, fg="green")  # Winning color
+        player_score += 1
+    else:
+        result_text = f"You lose! {computer_choice} beats {player_choice}"
+        result_label.config(text=result_text, fg="red")  # Losing color
+        cpu_score += 1
+    
+    # Update scores
+    score_label.config(text=f"Player: {player_score} | Computer: {cpu_score}")
 
-    if computer == player:
-        print("Its tie now...")
+# Function to reset the game
+def reset_game():
+    global cpu_score, player_score
+    cpu_score = 0
+    player_score = 0
+    comp_choice_label.config(text="Computer's choice will appear here", fg="black")
+    result_label.config(text="Make your choice!", fg="black")
+    score_label.config(text="Player: 0 | Computer: 0")
 
-    elif player == "Rock":
-        if computer == "Paper":
-            print("You lose...", computer, "covers", player)
-            cpu_score += 1
+# Create main window
+root = tk.Tk()
+root.title("Rock Paper Scissors")
+root.geometry("500x300")
+root.config(bg="#ffe799")
 
-        else:
-            print("You won...", player, "smashes", computer)
-            player_score += 1
+# Title label
+title_label = tk.Label(root, text="Rock Paper Scissors", font=("Arial", 16, "bold"), bg="#ffe799")
+title_label.pack(pady=10)
 
-    elif player == "Paper":
-        if computer == "Rock":
-            print("You won...", player, "covers", computer)
-            player_score += 1
-        
-        else:
-            print("You lose...", computer, "cut", player)
-            cpu_score += 1
+# Buttons frame
+frame = tk.Frame(root, bg="#ffe799")
+frame.pack(pady=10)
 
-    elif player == "Scissor":
-        if computer == "Paper":
-            print("You won...", player, "cut", computer)
-            player_score += 1
+for choice in choices:
+    tk.Button(frame, text=choice, width=12, font=("Arial", 12), bg="#add8e6", 
+              command=lambda c=choice: play(c)).pack(side="left", padx=5)
 
-        else:
-            print("You lose...", computer, "smashes", player)
-            cpu_score += 1
+# Computer's choice label (Separate for clarity)
+comp_choice_label = tk.Label(root, text="Computer's choice will appear here", font=("Arial", 12), bg="#ffe799", fg="black")
+comp_choice_label.pack(pady=5)
 
-    elif player == "End":
-        print("The final scores are ")
-        print(f"CPU Score {cpu_score}")
-        print(f"Player Score {player_score}")
-        break
+# Result label
+result_label = tk.Label(root, text="Make your choice!", font=("Arial", 12), bg="#ffe799", pady=10, fg="black")
+result_label.pack()
+
+# Score label
+score_label = tk.Label(root, text="Player: 0 | Computer: 0", font=("Arial", 12, "bold"), bg="#ffe799", fg="darkgreen")
+score_label.pack(pady=5)
+
+# Reset button
+reset_button = tk.Button(root, text="Reset Game", font=("Arial", 12), bg="#ffcccb", command=reset_game)
+reset_button.pack(pady=10)
+
+# Run the Tkinter loop
+root.mainloop()
