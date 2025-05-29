@@ -1,6 +1,6 @@
 Overview:
 
-This is a simple Rock-Paper-Scissors game built using Python. The program allows users to play against the computer in a classic best-of-one format, where choices are compared based on standard game rules.
+This is a simple GUI-based Rock Paper Scissors Game built using Python's Tkinter library. The program allows users to play against the computer in a classic best-of-one format where choices are compared based on standard game rules.
 
 Features:
 - Prompts the user to choose rock, paper, or scissors.
