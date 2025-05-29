@@ -1,6 +1,6 @@
 Overview:
 
-This is a random password generator built using Python. The program allows users to specify the password length and generates a secure, randomized password using a mix of alphanumeric characters and special symbols.
+This is a simple GUI-based Password Generator built using Python's Tkinter library. The program allows users to specify the password length and generates a secure, randomized password using a mix of alphanumeric characters and special symbols.
 
 Features:
 - User-defined password length input.
