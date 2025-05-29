@@ -1,5 +1,5 @@
 This repository contains my submissions for the CodSoft Python Programming Internship. 
-I have chosen the "Python Programming internship".This internship program provided an opportunity to deepen my understanding of Python and enhance my problem-solving skills through practical applications.
+I have chosen the "Python Programming internship". This internship program provided an opportunity to deepen my understanding of Python and enhance my problem-solving skills through practical applications.
 
 For successful completion of the internship, I have undertaken the following three tasks:
 1. Task 2: Calculator
