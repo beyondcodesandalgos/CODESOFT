@@ -1,6 +1,6 @@
 Overview:
 
-This is a simple GUI-based calculator application built using Python's Tkinter library. The program allows the user to use calculator logics with a visually appealing interface.
+This is a simple GUI-based calculator application built using Python's Tkinter library. The program allows the user to use calculator logics in a visually appealing interface.
 
 Features:
 - Supports addition, subtraction, multiplication, and division.
